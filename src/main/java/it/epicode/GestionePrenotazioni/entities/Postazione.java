@@ -15,7 +15,6 @@ public class Postazione {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String descrizione;
     @Enumerated(EnumType.STRING)
     private TipoPostazione type;
