@@ -47,8 +47,11 @@ public class Runner implements CommandLineRunner {
         //Prenotazione di una postazione tra 5 giorni
         Prenotazione prenotazione3 = new Prenotazione(LocalDate.now().plusDays(5), utente2, postazione2);
         prenotazioneService.savePrenotazione(prenotazione3);
-
+        //Ricerca di un Edificio per nome
         edificioService.getEdificioByName("MafiaInternational");
+        //Ricerca di una prenotazione in basa alla data
         prenotazioneService.findPrenotazioniByData(LocalDate.parse("2024-02-14"));
+        //
+        postazioneService.searchPostazioni(TipoPostazione.valueOf("PRIVATO"), "Napoli");
     }
 }

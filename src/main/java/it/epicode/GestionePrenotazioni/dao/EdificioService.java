@@ -27,6 +27,9 @@ public class EdificioService {
     public void getEdificioByName(String name) {
         Edificio found = edificioDAO.findByNome(name);
         System.out.println("Edificio trovato: " + found);
+    }
 
+    public Edificio getEdificioByCity(String citta) {
+        return edificioDAO.findByCity(citta);
     }
 }

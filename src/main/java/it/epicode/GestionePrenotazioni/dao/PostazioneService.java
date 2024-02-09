@@ -1,6 +1,8 @@
 package it.epicode.GestionePrenotazioni.dao;
 
+import it.epicode.GestionePrenotazioni.entities.Edificio;
 import it.epicode.GestionePrenotazioni.entities.Postazione;
+import it.epicode.GestionePrenotazioni.entities.TipoPostazione;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,8 @@ import java.util.List;
 public class PostazioneService {
     @Autowired
     private PostazioneDAO postazioneDAO;
+    @Autowired
+    private EdificioService edificioService;
 
     public void savePostazione(Postazione postazione) {
         postazioneDAO.save(postazione);
@@ -22,5 +26,11 @@ public class PostazioneService {
 
     public List<Postazione> getAllPostazioni() {
         return postazioneDAO.findAll();
+    }
+
+    public void searchPostazioni(TipoPostazione tipo, String city) {
+        Edificio edificioFound = edificioService.getEdificioByCity(city);
+        List<Postazione> found = postazioneDAO.findByTypeAndEdificio(tipo, edificioFound);
+        System.out.println("Postazioni di tipo " + tipo + " nella cittá di " + city + " trovate:" + found);
     }
 }

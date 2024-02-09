@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EdificioDAO extends JpaRepository<Edificio, Long> {
     Edificio findByNome(String name);
+
+    Edificio findByCity(String citta);
 }
