@@ -51,7 +51,7 @@ public class Runner implements CommandLineRunner {
         edificioService.getEdificioByName("MafiaInternational");
         //Ricerca di una prenotazione in basa alla data
         prenotazioneService.findPrenotazioniByData(LocalDate.parse("2024-02-14"));
-        //
+        //Ricerca di postazioni in base al tipo e alla cittá
         postazioneService.searchPostazioni(TipoPostazione.valueOf("PRIVATO"), "Napoli");
     }
 }
