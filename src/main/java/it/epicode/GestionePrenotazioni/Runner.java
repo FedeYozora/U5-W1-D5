@@ -1,9 +1,6 @@
 package it.epicode.GestionePrenotazioni;
 
-import it.epicode.GestionePrenotazioni.dao.EdificioService;
-import it.epicode.GestionePrenotazioni.dao.PostazioneService;
-import it.epicode.GestionePrenotazioni.dao.PrenotazioneService;
-import it.epicode.GestionePrenotazioni.dao.UtenteService;
+import it.epicode.GestionePrenotazioni.dao.*;
 import it.epicode.GestionePrenotazioni.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,6 +18,8 @@ public class Runner implements CommandLineRunner {
     PostazioneService postazioneService;
     @Autowired
     PrenotazioneService prenotazioneService;
+    @Autowired
+    private EdificioDAO edificioDAO;
 
     @Override
     public void run(String... args) {
@@ -30,7 +29,7 @@ public class Runner implements CommandLineRunner {
         Utente utente2 = new Utente("Pocho", "Thomas Barbato", "thomas.b@mail.com");
         utenteService.saveUtente(utente2);
         //-------------------------------------EDIFICI-------------------------------------
-        Edificio edificio = new Edificio("NomeTest", "Via Roma 13", "Napoli");
+        Edificio edificio = new Edificio("MafiaInternational", "Via Roma 13", "Napoli");
         edificioService.saveEdificio(edificio);
         //-------------------------------------POSTAZIONI-------------------------------------
         Postazione postazione1 = new Postazione("Postazione privata per un massimo di 4 persone", TipoPostazione.PRIVATO, 4, edificio);
@@ -48,5 +47,8 @@ public class Runner implements CommandLineRunner {
         //Prenotazione di una postazione tra 5 giorni
         Prenotazione prenotazione3 = new Prenotazione(LocalDate.now().plusDays(5), utente2, postazione2);
         prenotazioneService.savePrenotazione(prenotazione3);
+
+        edificioService.getEdificioByName("MafiaInternational");
+        prenotazioneService.findPrenotazioniByData(LocalDate.parse("2024-02-14"));
     }
 }
