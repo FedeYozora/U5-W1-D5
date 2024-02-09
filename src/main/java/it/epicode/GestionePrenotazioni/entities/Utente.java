@@ -16,16 +16,16 @@ public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    private String username;
     private String name;
-    private String surname;
     private String email;
     @OneToMany(mappedBy = "utente", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<Prenotazione> prenotazioni;
 
-    public Utente(String name, String surname, String email) {
+    public Utente(String username, String name, String email) {
+        this.username = username;
         this.name = name;
-        this.surname = surname;
         this.email = email;
     }
 }

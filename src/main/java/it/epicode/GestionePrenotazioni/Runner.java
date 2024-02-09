@@ -25,9 +25,9 @@ public class Runner implements CommandLineRunner {
     @Override
     public void run(String... args) {
         //-------------------------------------UTENTI-------------------------------------
-        Utente utente1 = new Utente("Federico", "Bonfiglio", "test@mail.com");
+        Utente utente1 = new Utente("Yozora", "Federico Bonfiglio", "test@mail.com");
         utenteService.saveUtente(utente1);
-        Utente utente2 = new Utente("Thomas", "Barbato", "thomas.b@mail.com");
+        Utente utente2 = new Utente("Pocho", "Thomas Barbato", "thomas.b@mail.com");
         utenteService.saveUtente(utente2);
         //-------------------------------------EDIFICI-------------------------------------
         Edificio edificio = new Edificio("NomeTest", "Via Roma 13", "Napoli");
